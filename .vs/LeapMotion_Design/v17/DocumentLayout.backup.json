@@ -1,0 +1,105 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\RuanJian\\Unity\\Unity\\Projects\\LeapMotion_Design\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D7E77CB3-F4C1-D1D5-4577-C22AEB00A026}|Assembly-CSharp.csproj|d:\\ruanjian\\unity\\unity\\projects\\leapmotion_design\\assets\\scripts\\dynamic\\hmm\\gesture_dynamic_main_con_hmm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7E77CB3-F4C1-D1D5-4577-C22AEB00A026}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\dynamic\\hmm\\gesture_dynamic_main_con_hmm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7E77CB3-F4C1-D1D5-4577-C22AEB00A026}|Assembly-CSharp.csproj|D:\\RuanJian\\Unity\\Unity\\Projects\\LeapMotion_Design\\assets\\scripts\\dynamic\\hmm\\gesture_dynamic_start_end_hmm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7E77CB3-F4C1-D1D5-4577-C22AEB00A026}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\dynamic\\hmm\\gesture_dynamic_start_end_hmm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7E77CB3-F4C1-D1D5-4577-C22AEB00A026}|Assembly-CSharp.csproj|D:\\RuanJian\\Unity\\Unity\\Projects\\LeapMotion_Design\\assets\\scripts\\dynamic\\hmm\\gesture_dynamic_template_hmm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7E77CB3-F4C1-D1D5-4577-C22AEB00A026}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\dynamic\\hmm\\gesture_dynamic_template_hmm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7E77CB3-F4C1-D1D5-4577-C22AEB00A026}|Assembly-CSharp.csproj|D:\\RuanJian\\Unity\\Unity\\Projects\\LeapMotion_Design\\assets\\scripts\\dynamic\\dynamic_gesture\\gesture_dynamic_start_end.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7E77CB3-F4C1-D1D5-4577-C22AEB00A026}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\dynamic\\dynamic_gesture\\gesture_dynamic_start_end.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7E77CB3-F4C1-D1D5-4577-C22AEB00A026}|Assembly-CSharp.csproj|D:\\RuanJian\\Unity\\Unity\\Projects\\LeapMotion_Design\\assets\\scripts\\dynamic\\hmm\\gesture_dynamic_data_con_hmm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7E77CB3-F4C1-D1D5-4577-C22AEB00A026}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\dynamic\\hmm\\gesture_dynamic_data_con_hmm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Gesture_Dynamic_Start_End.cs",
+              "DocumentMoniker": "D:\\RuanJian\\Unity\\Unity\\Projects\\LeapMotion_Design\\Assets\\Scripts\\Dynamic\\Dynamic_Gesture\\Gesture_Dynamic_Start_End.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Dynamic\\Dynamic_Gesture\\Gesture_Dynamic_Start_End.cs",
+              "ToolTip": "D:\\RuanJian\\Unity\\Unity\\Projects\\LeapMotion_Design\\Assets\\Scripts\\Dynamic\\Dynamic_Gesture\\Gesture_Dynamic_Start_End.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Dynamic\\Dynamic_Gesture\\Gesture_Dynamic_Start_End.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-11T10:54:15.85Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Gesture_Dynamic_Template_HMM.cs",
+              "DocumentMoniker": "D:\\RuanJian\\Unity\\Unity\\Projects\\LeapMotion_Design\\Assets\\Scripts\\Dynamic\\HMM\\Gesture_Dynamic_Template_HMM.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Dynamic\\HMM\\Gesture_Dynamic_Template_HMM.cs",
+              "ToolTip": "D:\\RuanJian\\Unity\\Unity\\Projects\\LeapMotion_Design\\Assets\\Scripts\\Dynamic\\HMM\\Gesture_Dynamic_Template_HMM.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Dynamic\\HMM\\Gesture_Dynamic_Template_HMM.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-07T03:00:15.645Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Gesture_Dynamic_Start_End_HMM.cs",
+              "DocumentMoniker": "D:\\RuanJian\\Unity\\Unity\\Projects\\LeapMotion_Design\\Assets\\Scripts\\Dynamic\\HMM\\Gesture_Dynamic_Start_End_HMM.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Dynamic\\HMM\\Gesture_Dynamic_Start_End_HMM.cs",
+              "ToolTip": "D:\\RuanJian\\Unity\\Unity\\Projects\\LeapMotion_Design\\Assets\\Scripts\\Dynamic\\HMM\\Gesture_Dynamic_Start_End_HMM.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Dynamic\\HMM\\Gesture_Dynamic_Start_End_HMM.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAYwAgAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-07T03:00:12.486Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Gesture_Dynamic_Main_Con_HMM.cs",
+              "DocumentMoniker": "D:\\RuanJian\\Unity\\Unity\\Projects\\LeapMotion_Design\\Assets\\Scripts\\Dynamic\\HMM\\Gesture_Dynamic_Main_Con_HMM.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Dynamic\\HMM\\Gesture_Dynamic_Main_Con_HMM.cs",
+              "ToolTip": "D:\\RuanJian\\Unity\\Unity\\Projects\\LeapMotion_Design\\Assets\\Scripts\\Dynamic\\HMM\\Gesture_Dynamic_Main_Con_HMM.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Dynamic\\HMM\\Gesture_Dynamic_Main_Con_HMM.cs",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAYwJ8AAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-07T03:00:08.951Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Gesture_Dynamic_Data_Con_HMM.cs",
+              "DocumentMoniker": "D:\\RuanJian\\Unity\\Unity\\Projects\\LeapMotion_Design\\Assets\\Scripts\\Dynamic\\HMM\\Gesture_Dynamic_Data_Con_HMM.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Dynamic\\HMM\\Gesture_Dynamic_Data_Con_HMM.cs",
+              "ToolTip": "D:\\RuanJian\\Unity\\Unity\\Projects\\LeapMotion_Design\\Assets\\Scripts\\Dynamic\\HMM\\Gesture_Dynamic_Data_Con_HMM.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Dynamic\\HMM\\Gesture_Dynamic_Data_Con_HMM.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-07T03:00:02.313Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
