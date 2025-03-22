@@ -35,6 +35,8 @@ MonoBehaviour:
   - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-Finger_Extension_List__UnityEngine.UIElements.ListView
   - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-Palm_Angle_List__UnityEngine.UIElements.ListView
   - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-Movement_Rate_List__UnityEngine.UIElements.ListView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-Palm_Movement_Direction_List__UnityEngine.UIElements.ListView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-Palm_Rotation_Quaternion_List__UnityEngine.UIElements.ListView
   m_Values:
   - '{}'
   - '{}'
@@ -52,9 +54,11 @@ MonoBehaviour:
   - '{}'
   - '{}'
   - '{}'
+  - '{}'
+  - '{}'
   - '{"m_ShowAlternatingRowBackgrounds":0,"serializedVirtualizationData":{"scrollOffset":{"x":0.0,"y":0.0},"firstVisibleIndex":0,"contentPadding":0.0,"contentHeight":0.0,"anchoredItemIndex":0,"anchorOffset":0.0}}'
+  - '{"m_ShowAlternatingRowBackgrounds":0,"serializedVirtualizationData":{"scrollOffset":{"x":0.0,"y":0.0},"firstVisibleIndex":0,"contentPadding":0.0,"contentHeight":0.0,"anchoredItemIndex":-1,"anchorOffset":0.0}}'
   - '{}'
   - '{"m_ShowAlternatingRowBackgrounds":0,"serializedVirtualizationData":{"scrollOffset":{"x":0.0,"y":0.0},"firstVisibleIndex":0,"contentPadding":0.0,"contentHeight":0.0,"anchoredItemIndex":-1,"anchorOffset":0.0}}'
-  - '{"m_ShowAlternatingRowBackgrounds":0,"serializedVirtualizationData":{"scrollOffset":{"x":0.0,"y":0.0},"firstVisibleIndex":0,"contentPadding":0.0,"contentHeight":0.0,"anchoredItemIndex":0,"anchorOffset":0.0}}'
-  - '{"m_ShowAlternatingRowBackgrounds":0,"serializedVirtualizationData":{"scrollOffset":{"x":0.0,"y":0.0},"firstVisibleIndex":0,"contentPadding":0.0,"contentHeight":0.0,"anchoredItemIndex":0,"anchorOffset":0.0}}'
+  - '{"m_ShowAlternatingRowBackgrounds":0,"serializedVirtualizationData":{"scrollOffset":{"x":0.0,"y":0.0},"firstVisibleIndex":0,"contentPadding":0.0,"contentHeight":0.0,"anchoredItemIndex":-1,"anchorOffset":0.0}}'
   - '{"m_ShowAlternatingRowBackgrounds":0,"serializedVirtualizationData":{"scrollOffset":{"x":0.0,"y":0.0},"firstVisibleIndex":0,"contentPadding":0.0,"contentHeight":0.0,"anchoredItemIndex":0,"anchorOffset":0.0}}'

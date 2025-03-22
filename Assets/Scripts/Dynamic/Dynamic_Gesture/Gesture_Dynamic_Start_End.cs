@@ -7,15 +7,15 @@ public class Gesture_Dynamic_Start_End : MonoBehaviour
     public bool Is_Gesture_InProgress = false; // 判断手势是否正在进行
     public float Gesture_End_Time;
     public float Gesture_Hold_Time = 1f; // 手势保持时间阈值
-    public float Gesture_Max_Duration = 0.5f; // 修改为 0.5 秒
+    public float Gesture_Max_Duration = 0.7f; // 手势最大持续时间
     private float Gesture_Start_Time; // 手势开始的时间
     public Gesture_Dynamic_Main_Con gesture_main_con;
     public Button Gesture_Start;
     public Button Gesture_End;
     public bool Bool_Gesture_Start = false;
     public bool Bool_Gesture_End = false;
-    private Vector3 lastPalmPosition; // 存储上一帧手掌位置
-    private float lastPalmVelocityMagnitude = 0f; // 手掌速度的大小
+    private Vector3 lastPalmPosition; // 存储上一帧掌心位置
+    private float lastPalmVelocityMagnitude = 0f; // 掌心速度的大小
 
     void Start()
     {
@@ -34,7 +34,7 @@ public class Gesture_Dynamic_Start_End : MonoBehaviour
         {
             Hand hand = frame.Hands[0]; // 选择第一只手
 
-            // 判断手掌是否存在且是否处于静止状态
+            // 判断手掌是否移动以及是否处于合适状态
             if (hand.PalmPosition.magnitude > 0f)
             {
                 StartGesture();
@@ -64,21 +64,21 @@ public class Gesture_Dynamic_Start_End : MonoBehaviour
             {
                 Hand hand = frame.Hands[0];
 
-                // 获取手掌速度的大小
+                // 获取掌心速度的大小
                 float palmVelocityMagnitude = hand.PalmVelocity.magnitude;
 
-                // 如果手掌开始移动，重置结束时间
-                if (palmVelocityMagnitude > 0.1f) // 设置一个最小速度阈值，防止误判
+                // 如果手势开始移动，重置结束时间
+                if (palmVelocityMagnitude > 0.1f) // 设置一个最小速度阈值，避免误判
                 {
                     Gesture_End_Time = 0f;
                 }
                 else
                 {
-                    // 如果速度小于阈值，开始计时
+                    // 速度小于阈值，开始计时
                     Gesture_End_Time += Time.deltaTime;
                 }
 
-                // 如果保持时间超过设定的阈值，结束手势
+                // 如果计时超过设定的阈值，结束手势
                 if (Gesture_End_Time >= Gesture_Hold_Time)
                 {
                     EndGesture();
@@ -106,7 +106,7 @@ public class Gesture_Dynamic_Start_End : MonoBehaviour
         Bool_Gesture_End = false; // 防止重复结束
     }
 
-    // UI 按钮事件，开始手势
+    // UI 按钮事件：开始手势
     public void On_Gesture_Start()
     {
         if (!Is_Gesture_InProgress) // 防止重复开始
@@ -116,10 +116,10 @@ public class Gesture_Dynamic_Start_End : MonoBehaviour
         }
     }
 
-    // UI 按钮事件，结束手势
+    // UI 按钮事件：结束手势
     public void On_Gesture_End()
     {
-        if (Is_Gesture_InProgress) // 防止没开始就结束
+        if (Is_Gesture_InProgress) // 防止未开始就结束
         {
             Bool_Gesture_End = true;
             Bool_Gesture_Start = false;

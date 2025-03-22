@@ -82,6 +82,7 @@
     <Compile Include="Assets\Samples\Ultraleap Tracking\7.1.0\XR Examples\Example Assets\Misc and Shared\Scripts\SimpleGrabBallFeedback.cs" />
     <Compile Include="Assets\Scripts\OSM_map\OSMImporter.cs" />
     <Compile Include="Assets\Samples\Ultraleap Tracking\7.1.0\XR Examples\Example Assets\Pinch to Paint\Scripts\PaintCursor.cs" />
+    <Compile Include="Assets\Scripts\car\HMM_CAR.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
     <Compile Include="Assets\Samples\Ultraleap Tracking\7.1.0\XR Examples\Example Assets\Anchors\scripts\SimpleAnchorFeedback.cs" />
     <Compile Include="Assets\Samples\Ultraleap Tracking Preview\7.1.0\Preview Examples\XRControllerSupport\ControllerModelEnableDisable.cs" />
@@ -123,7 +124,6 @@
     <Compile Include="Assets\Scripts\Stack\Stack_Gesture\Gesture_Data_Con.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
     <Compile Include="Assets\Samples\Ultraleap Tracking\7.1.0\XR Examples\Example Assets\Pinch to Paint\Scripts\RectToroid.cs" />
-    <Compile Include="Assets\Scripts\Dynamic\HMM\GestureRecognition_HMM.cs" />
     <Compile Include="Assets\Samples\Ultraleap Tracking\7.1.0\XR Examples\Example Assets\Pose Detection\Scripts\PoseDetectorUIText.cs" />
     <Compile Include="Assets\Scripts\Dynamic\HMM\Gesture_Dynamic_Template_HMM.cs" />
     <Compile Include="Assets\Samples\Ultraleap Tracking\7.1.0\XR Examples\Example Assets\Turntable and Pullcord\Scripts\Turntable\TurntableVisuals.cs" />

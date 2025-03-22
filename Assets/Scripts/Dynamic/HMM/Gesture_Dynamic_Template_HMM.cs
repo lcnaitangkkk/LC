@@ -11,10 +11,10 @@ public class Gesture_Dynamic_Template_HMM : MonoBehaviour
     private void Start()
     {
         gesture_Data_Con = GetComponent<Gesture_Dynamic_Data_Con_HMM>();
-        folderPath = Application.dataPath + "/Dynamic_Gesture_Tem_Test"; // 手势模板存储路径
+        folderPath = Application.dataPath + "/Dynamic_Gesture_Tem_Test"; // 设置模板存储路径
         if (!Directory.Exists(folderPath))
         {
-            Directory.CreateDirectory(folderPath); // 如果文件夹不存在，创建文件夹
+            Directory.CreateDirectory(folderPath); // 如果文件夹不存在，则创建文件夹
         }
     }
 
@@ -24,10 +24,11 @@ public class Gesture_Dynamic_Template_HMM : MonoBehaviour
         GestureTemplate gestureTemplate = new GestureTemplate()
         {
             gestureName = gestureTemplateName,
-            Palm_Movement_List = gesture_Data_Con.Palm_Movement_List,
-            Finger_Extension_List = gesture_Data_Con.Finger_Extension_List,
-            Palm_Angle_List = gesture_Data_Con.Palm_Angle_List,
-            Movement_Rate_List = gesture_Data_Con.Movement_Rate_List
+            Palm_Movement_List = gesture_Data_Con.GetPalmMovementList(),
+            Finger_Extension_List = gesture_Data_Con.GetFingerExtensionList(),
+            Movement_Rate_List = gesture_Data_Con.GetMovementRateList(),
+            Palm_Movement_Direction_List = gesture_Data_Con.GetPalmMovementDirectionList(),
+            Palm_Rotation_Quaternion_List = gesture_Data_Con.GetPalmRotationQuaternionList()
         };
 
         string json = JsonUtility.ToJson(gestureTemplate);
@@ -56,14 +57,15 @@ public class Gesture_Dynamic_Template_HMM : MonoBehaviour
         }
     }
 
-    // 手势模板数据结构
+    // 模板数据结构
     [System.Serializable]
     public class GestureTemplate
     {
         public string gestureName;
         public List<float> Palm_Movement_List; // 掌心位移时间序列
         public List<float> Finger_Extension_List; // 手指伸展度时间序列
-        public List<float> Palm_Angle_List; // 掌心角度时间序列
         public List<float> Movement_Rate_List; // 运动方向变化率时间序列
+        public List<Vector3> Palm_Movement_Direction_List; // 手掌移动方向时间序列
+        public List<Quaternion> Palm_Rotation_Quaternion_List; // 手掌旋转四元数时间序列
     }
 }

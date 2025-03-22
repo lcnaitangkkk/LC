@@ -6,8 +6,8 @@ public class Gesture_Dynamic_Main_Con : MonoBehaviour
     private Gesture_Dynamic_Start_End startEndHandler;
     private Gesture_Dynamic_Data_Con dataCollector;
     public Gesture_Dynamic_Template gesture_Template;
-    private Controller leapController; // 只创建一个 Leap Controller
-    private int frameCounter = 0; // 帧数计数器
+    private Controller leapController; // 仅创建一个 Leap Controller
+    private int frameCounter = 0; // 帧计数器
 
     void Start()
     {
@@ -42,7 +42,7 @@ public class Gesture_Dynamic_Main_Con : MonoBehaviour
     public void StartGesture()
     {
         dataCollector.On_Initialize_GestureData(); // 初始化手势数据
-        frameCounter = 0; // 重置帧数计数器
+        frameCounter = 0; // 重置帧计数器
         Debug.Log("Dynamic Gesture Started");
     }
 
@@ -52,7 +52,7 @@ public class Gesture_Dynamic_Main_Con : MonoBehaviour
         Debug.Log("Dynamic Gesture Ended");
 
         // 保存手势模板
-        // 确保数据已经完全收集，在保存之前需要进行必要的验证
+        // 确保数据已经完全收集，在保存之前需要对列表进行验证
         gesture_Template.SaveGestureTemplate(); // 保存手势模板
     }
 }

@@ -30,6 +30,7 @@ public class Gesture_Dynamic_Start_End_HMM : MonoBehaviour
     // 检查手势是否开始
     public void On_Check_Gesture_Start(Frame frame)
     {
+
         if (!Is_Gesture_InProgress && frame.Hands.Count > 0 && Bool_Gesture_Start == true)
         {
             Hand hand = frame.Hands[0]; // 选择第一只手

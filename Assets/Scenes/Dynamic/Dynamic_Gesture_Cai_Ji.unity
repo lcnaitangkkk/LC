@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gesture_Data_Con: {fileID: 0}
-  gestureTemplateName: woquan15
+  gestureTemplateName: fangda20
 --- !u!114 &249531340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,8 +297,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Palm_Movement_List: []
   Finger_Extension_List: []
-  Palm_Angle_List: []
   Movement_Rate_List: []
+  Palm_Movement_Direction_List: []
+  Palm_Rotation_Quaternion_List: []
 --- !u!4 &249531342
 Transform:
   m_ObjectHideFlags: 0
