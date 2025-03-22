@@ -3,110 +3,121 @@ import os
 import numpy as np
 from hmmlearn import hmm
 import joblib
-import sys
 import time
-import multiprocessing
 import threading
 import win32pipe, win32file, pywintypes
 
-# 定义管道名称，这是客户端和服务器通过管道通信的连接标识
+# 管道名称，供 Unity 客户端连接
 PIPE_NAME = r'\\.\pipe\GesturePipe'
 
-# 加载手势数据的方法
+# 处理Vector3和Quaternion数据
+def process_vector3(vector3_list):
+    return np.array([[v['x'], v['y'], v['z']] for v in vector3_list])
+
+def process_quaternion(quaternion_list):
+    return np.array([[q['x'], q['y'], q['z'], q['w']] for q in quaternion_list])
+
+# 读取单个JSON文件并提取数据
 def load_gesture_data(file_path):
     try:
-        # 打开文件并读取内容
         with open(file_path, 'r') as file:
             data = json.load(file)
-        # 将文件中的不同数据字段合并成一个列表
-        return (
-            data['Palm_Movement_List'] + 
-            data['Finger_Extension_List'] + 
-            data['Palm_Angle_List'] + 
-            data['Movement_Rate_List']
-        )
+
+        palm_movement = np.array(data['Palm_Movement_List']).reshape(-1, 1)
+        finger_extension = np.array(data['Finger_Extension_List']).reshape(-1, 1)
+        movement_rate = np.array(data['Movement_Rate_List']).reshape(-1, 1)
+        palm_movement_direction = process_vector3(data['Palm_Movement_Direction_List'])
+        palm_rotation_quaternion = process_quaternion(data['Palm_Rotation_Quaternion_List'])
+
+        features = np.hstack((palm_movement, finger_extension, movement_rate, palm_movement_direction, palm_rotation_quaternion))
+
+        return features
     except Exception as e:
         print(f"Error loading file {file_path}: {e}")
-        return []
+        return None
 
-# 数据预处理方法：标准化数据（让数据平均值为0，标准差为1）
-def preprocess_data(data):
-    data_array = np.array(data)  # 转换为numpy数组
-    mean, std = np.mean(data_array), np.std(data_array)  # 计算均值和标准差
-    # 标准化处理，返回标准化后的数据
-    return (data_array - mean) / std
+# 数据标准化
+def normalize_data(data_list):
+    """针对每个手势单独进行标准化"""
+    normalized_data = []
+    for data in data_list:
+        mean = np.mean(data, axis=0)
+        std = np.std(data, axis=0)
+        std[std == 0] = 1e-8  # 避免除零错误
+        normalized_data.append((data - mean) / std)
+    return normalized_data
 
-# 计算模型的Viterbi分数，用来评估该数据与模型的匹配度
+# 计算测试数据的 Viterbi 评分
 def calculate_viterbi_score(model, test_data):
-    preprocessed_data = preprocess_data(test_data)  # 先对数据进行标准化
-    data_matrix = np.array(preprocessed_data).reshape(-1, 1)  # 将数据转换为适合HMM模型输入的格式
-    try:
-        log_prob, _ = model.decode(data_matrix, algorithm='viterbi')  # 使用Viterbi算法计算分数
-        return log_prob  # 返回对数概率分数
-    except ValueError:
-        print("Error decoding data.")
-        return float('-inf')  # 如果解码出错，返回负无穷
+    scores = []
+    for data in test_data:
+        try:
+            log_prob, _ = model.decode(data, algorithm='viterbi')
+            scores.append(log_prob)
+        except ValueError:
+            print("Error decoding data. Skipping this sample.")
+            scores.append(float('-inf'))  # 失败返回极小值
+    return max(scores)  # 取最高分
 
-# 识别手势：加载数据并与预训练模型进行比对
-def recognize_gesture(file_path):
-    test_data = load_gesture_data(file_path)  # 加载手势数据
-    if not test_data:
-        return "NoData"  # 如果没有数据，返回“NoData”
+# 处理 Unity 请求和返回结果
+def handle_unity_request(pipe):
+    while True:
+        try:
+            # 读取管道数据
+            _, data = win32file.ReadFile(pipe, 65536)
+            file_path = data.decode().strip()  # 获取文件路径
+            print(f"Received request for: {file_path}")
 
-    # 模型存放的目录路径
-    model_dir = "D:/RuanJian/Unity/Unity/Projects/LeapMotion_Design/Assets/Models/"
-    label_scores = {}  # 存储每个模型的分数
+            # 读取手势数据并标准化
+            gesture_data = load_gesture_data(file_path)
+            if gesture_data is None:
+                result = "NoData"
+            else:
+                # 标准化数据
+                gesture_data = normalize_data([gesture_data])[0]
 
-    # 遍历目录中的所有模型文件
-    for model_file in os.listdir(model_dir):
-        if model_file.endswith("_hmm_model.pkl"):  # 只处理HMM模型文件
-            label = model_file.replace("_hmm_model.pkl", "")  # 提取模型的标签
-            try:
-                # 加载HMM模型
-                model = joblib.load(os.path.join(model_dir, model_file))
-                # 计算该模型与测试数据的Viterbi分数
-                label_scores[label] = calculate_viterbi_score(model, test_data)
-            except FileNotFoundError:
-                print(f"Model {model_file} not found.")
-                continue
+                # 预测手势
+                label_scores = {}
 
-    # 如果没有找到任何模型，返回“NoModel”
-    if not label_scores:
-        return "NoModel"
+                # 加载模型
+                for label in os.listdir("D:/RuanJian/Unity/Unity/Projects/LeapMotion_Design/Assets/Models/"):
+                    if label.endswith("_hmm_model.pkl"):
+                        model_file = os.path.join("D:/RuanJian/Unity/Unity/Projects/LeapMotion_Design/Assets/Models/", label)
+                        try:
+                            hmm_model = joblib.load(model_file)
+                            score = calculate_viterbi_score(hmm_model, [gesture_data])
+                            label_scores[label.replace("_hmm_model.pkl", "")] = score
+                        except FileNotFoundError:
+                            print(f"Model file {model_file} not found.")
+                            continue
 
-    # 找到得分最高的标签（即最匹配的手势）
-    best_label = max(label_scores, key=label_scores.get)
-    return best_label
+                if label_scores:
+                    best_label = max(label_scores, key=label_scores.get)
+                    result = f"{best_label}"
+                else:
+                    result = "NoModel"
 
-# 管道服务器，负责接收来自客户端的请求，并处理
+            # 返回结果到Unity
+            win32file.WriteFile(pipe, result.encode())
+        except pywintypes.error:
+            break
+
+# 管道服务器
 def pipe_server():
     while True:
         try:
-            # 创建命名管道
+            # 创建管道
             pipe = win32pipe.CreateNamedPipe(
                 PIPE_NAME,
-                win32pipe.PIPE_ACCESS_DUPLEX,  # 双向通信
+                win32pipe.PIPE_ACCESS_DUPLEX,
                 win32pipe.PIPE_TYPE_MESSAGE | win32pipe.PIPE_READMODE_MESSAGE | win32pipe.PIPE_WAIT,
                 1, 65536, 65536, 0, None
             )
 
             print("Waiting for Unity connection...")
-            win32pipe.ConnectNamedPipe(pipe, None)  # 等待客户端（Unity）连接
+            win32pipe.ConnectNamedPipe(pipe, None)  
 
-            while True:
-                try:
-                    # 从管道读取数据（文件路径）
-                    _, data = win32file.ReadFile(pipe, 65536)
-                    file_path = data.decode().strip()  # 解码文件路径
-                    print(f"Received request for: {file_path}")
-
-                    # 调用手势识别函数，处理请求
-                    result = recognize_gesture(file_path)
-                    # 将结果写回管道，发送给客户端
-                    win32file.WriteFile(pipe, result.encode())
-
-                except pywintypes.error:
-                    break
+            handle_unity_request(pipe)
 
             # 关闭管道
             win32file.CloseHandle(pipe)
@@ -115,8 +126,8 @@ def pipe_server():
             print(f"Pipe error: {e}")
             time.sleep(1)
 
-# 主程序入口，启动管道服务器线程 
+# 启动管道服务器线程
 if __name__ == "__main__":
     pipe_thread = threading.Thread(target=pipe_server, daemon=True)
-    pipe_thread.start()  # 启动管道服务器线程
-    pipe_thread.join()  # 等待线程结束
+    pipe_thread.start()
+    pipe_thread.join()
